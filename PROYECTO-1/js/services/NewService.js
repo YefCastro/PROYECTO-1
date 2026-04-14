@@ -277,6 +277,70 @@ export class NewsService {
     }
 
     /**
+     * Actualiza noticias con detección de modo desarrollo
+     */
+    async updateNews(city, weather, collapseStatus) {
+        const now = Date.now();
+        
+        // Check if we need to update (30 minutes cache)
+        if (this.lastUpdate && (now - this.lastUpdate) < this.CACHE_DURATION) {
+            return this.currentNews;
+        }
+
+        // Skip external APIs in development to avoid CORS errors
+        const isDevelopment = window.location.hostname === '127.0.0.1' || 
+                           window.location.hostname === 'localhost';
+        
+        if (isDevelopment) {
+            console.log('NewsService: Development mode detected, using local news only');
+            const fallbackMessage = this.generateFallbackNews(city, weather, collapseStatus);
+            this.currentNews = [{ 
+                title: fallbackMessage,
+                description: "Noticia generada localmente en modo desarrollo.",
+                source: "Sistema Local",
+                url: "#",
+                publishedAt: new Date().toISOString()
+            }];
+            this.lastUpdate = now;
+            return this.currentNews;
+        }
+
+        // Try GDELT first
+        try {
+            const params = new URLSearchParams({
+                query: "urban development city infrastructure public services",
+                mode: "ArtList",
+                maxrecords: "5",
+                format: "json",
+                sort: "DateDesc"
+            });
+
+            const data = await APIService.fetchExternalJSON(
+                `https://api.gdeltproject.org/api/v2/doc/doc?${params.toString()}`,
+                { timeout: 10000, retries: 1 } // Reduce retries to avoid rate limiting
+            );
+
+            const articles = data?.articles || [];
+            this.currentNews = articles;
+            this.lastUpdate = now;
+            return this.currentNews;
+        } catch (error) {
+            console.warn('GDELT API failed, using local fallback:', error.message);
+            // Generate local fallback news immediately
+            const fallbackMessage = this.generateFallbackNews(city, weather, collapseStatus);
+            this.currentNews = [{ 
+                title: fallbackMessage,
+                description: "Noticia generada localmente debido a problemas de conectividad.",
+                source: "Sistema Local",
+                url: "#",
+                publishedAt: new Date().toISOString()
+            }];
+            this.lastUpdate = now;
+            return this.currentNews;
+        }
+    }
+
+    /**
      * Obtener historial de noticias
      */
     getHistory() {

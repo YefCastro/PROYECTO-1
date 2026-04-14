@@ -73,39 +73,122 @@
 .tile-road {
     background: linear-gradient(135deg, var(--color-road) 0%, #4a4a4a 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    position: relative;
+}
+
+.tile-road::before {
+    content: '🛣️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-residential {
     background: linear-gradient(135deg, var(--color-residential) 0%, #4a90e2 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+}
+
+.tile-residential::before {
+    content: '🏠';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-commercial {
     background: linear-gradient(135deg, var(--color-commercial) 0%, #7cb342 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+}
+
+.tile-commercial::before {
+    content: '🏪';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-industrial {
     background: linear-gradient(135deg, var(--color-industrial) 0%, #ff9800 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+}
+
+.tile-industrial::before {
+    content: '🏭';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-service {
     background: linear-gradient(135deg, var(--color-service) 0%, #9c27b0 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+}
+
+.tile-service::before {
+    content: '🏛';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-park {
     background: linear-gradient(135deg, #7bb661 0%, #4caf50 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+}
+
+.tile-park::before {
+    content: '🌳';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
 }
 
 .tile-utility_plant {
     background: linear-gradient(135deg, var(--color-utility) 0%, #f44336 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
 }
 
-/* Efectos de hover mejorados */
+.tile-utility_plant::before {
+    content: '⚡';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 2;
+}
+
+/* Efectos de hover mejorados con elevación 3D */
+.tile:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
 .tile:hover::before {
     content: '';
     position: absolute;

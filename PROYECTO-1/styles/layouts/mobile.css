@@ -9,13 +9,15 @@
     min-height: 100vh;
     padding: var(--spacing-sm);
     gap: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    background: var(--theme-modern-bg);
 }
 
 /* Header */
 .app-header {
     text-align: center;
     padding: var(--spacing-md) 0;
+    background: var(--theme-modern-header);
+    background: var(--theme-modern-header, var(--color-surface));
     background: var(--color-surface);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);

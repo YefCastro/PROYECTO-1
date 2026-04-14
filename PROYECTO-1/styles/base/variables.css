@@ -31,6 +31,22 @@
     --color-empty: #bdc3c7;
 
     /* ===============================
+       COLORES TEMÁTICOS DE CIUDAD
+    =============================== */
+    --theme-modern-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --theme-nature-bg: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --theme-industrial-bg: linear-gradient(135deg, #434343 0%, #000000 100%);
+    --theme-ocean-bg: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+    --theme-sunset-bg: linear-gradient(135deg, #0F2027 0%, #2C5F2D 100%);
+    
+    /* Colores temáticos para headers */
+    --theme-modern-header: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --theme-nature-header: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --theme-industrial-header: linear-gradient(135deg, #434343 0%, #000000 100%);
+    --theme-ocean-header: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+    --theme-sunset-header: linear-gradient(135deg, #0F2027 0%, #2C5F2D 100%);
+
+    /* ===============================
        TIPOGRAFÍA
     =============================== */
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

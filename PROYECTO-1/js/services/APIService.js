@@ -62,16 +62,25 @@ export class APIService {
             } catch (error) {
                 lastError = error;
                 
-                // Don't retry on certain errors
-                if (error instanceof APIError && error.status >= 400 && error.status < 500) {
+                // Handle CORS errors specifically
+                if (error.message.includes('CORS') || error.message.includes('blocked by CORS policy')) {
+                    console.warn('APIService: CORS error detected - this is expected for external APIs');
+                    // Don't retry CORS errors
                     break;
                 }
-
-                // Log retry attempt
+                
+                // Don't retry on certain errors
+                if (error instanceof APIError && error.status >= 400 && error.status < 500) {
+                    console.warn(`APIService: Client error ${error.status} - not retrying: ${error.message}`);
+                    break;
+                }
+                
+                // Log retry attempt with better context
                 if (attempt < retries) {
-                    console.warn(`APIService: Attempt ${attempt + 1} failed, retrying...`, error.message);
+                    const retryDelay = Math.pow(2, attempt) * 1000;
+                    console.warn(`APIService: Attempt ${attempt + 1} failed (retry in ${retryDelay}ms): ${error.message}`);
                     // Exponential backoff
-                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
+                    await new Promise(resolve => setTimeout(resolve, retryDelay));
                 }
             } finally {
                 if (timeoutId) {
@@ -80,7 +89,7 @@ export class APIService {
             }
         }
 
-        console.error("APIService Error: All attempts failed", lastError);
+        console.error("APIService: All attempts failed", lastError?.message || 'Unknown error');
         return null;
     }
 
