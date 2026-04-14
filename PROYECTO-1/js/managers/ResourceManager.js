@@ -89,8 +89,12 @@ export class ResourceManager {
                 modifiers.foodProduction
             );
 
+            // Calcular costo de mantenimiento dinámico (0.01% del costo del edificio)
+            const dynamicMaintenanceCost = building.cost * 0.0001; // 0.01% = 0.0001 como decimal
+            const totalBuildingMaintenance = (building.maintenanceCost || 0) + dynamicMaintenanceCost;
+            
             totalMaintenance += applyModifier(
-                building.maintenanceCost,
+                totalBuildingMaintenance,
                 modifiers.maintenance
             );
 
