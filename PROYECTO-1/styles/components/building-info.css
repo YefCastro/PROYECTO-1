@@ -1,0 +1,30 @@
+/* ============================================
+   BUILDING INFO PANEL
+   ============================================ */
+
+.build-panel select,
+.build-panel input,
+.city-panel select,
+.city-panel input,
+.map-template-panel textarea,
+.demolition-panel input,
+.route-panel input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.build-panel button,
+.city-panel button,
+.map-template-panel button,
+.demolition-panel button,
+.route-panel button {
+    width: 100%;
+}
+
+.map-template-panel textarea {
+    resize: vertical;
+    min-height: 140px;
+    font-family: monospace;
+}

@@ -1,0 +1,197 @@
+/* ============================================
+   MOBILE LAYOUT (BASE) - 320px to 767px
+   ============================================ */
+
+/* Container principal */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--color-primary);
+}
+
+/* Panel lateral - Collapsible en mobile */
+.side-panel {
+    background-color: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    max-height: 40vh;
+    overflow-y: auto;
+    order: 2;
+}
+
+/* Sección de controles */
+.controls-panel {
+    order: 1;
+}
+
+/* Sección del mapa - Prioridad en mobile */
+.map-section {
+    background-color: var(--color-surface);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    order: 3;
+    min-height: 400px; /* Aumentado para mejor visibilidad */
+    position: relative;
+    overflow: auto; /* Permitir scroll para navegar */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+/* Contenedor del mapa para mejor control */
+.map-container {
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+    padding: var(--spacing-sm);
+}
+
+/* Grid del mapa responsivo */
+#game-grid {
+    display: grid;
+    gap: 3px; /* Aumentado para mejor separación */
+    justify-content: start; /* Alineado a la izquierda */
+    transform-origin: top left; /* Origen en la esquina */
+    transition: transform 0.3s ease;
+    min-width: max-content; /* Asegurar que no se recorte */
+}
+
+/* Tiles del mapa - más grandes en mobile */
+.tile {
+    width: 28px; /* Aumentado de 20px a 28px */
+    height: 28px; /* Aumentado de 20px a 28px */
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.tile:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Panel de noticias */
+.news-panel {
+    padding: var(--spacing-md);
+    background-color: var(--color-secondary);
+    color: white;
+    text-align: center;
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+    order: 4;
+}
+
+/* Controles de construcción */
+.build-panel, .demolition-panel, .route-panel {
+    margin-top: var(--spacing-sm);
+}
+
+/* Formularios */
+.panel-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.panel-form input, .panel-form select, .panel-form button {
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+}
+
+/* Botones en mobile */
+button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    touch-action: manipulation;
+    min-height: 44px; /* Mínimo para touch */
+}
+
+/* Modales */
+#modal-overlay {
+    padding: var(--spacing-md);
+}
+
+#modal {
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Zoom y scroll para mapa en mobile */
+.map-section.zoomed {
+    overflow: auto;
+}
+
+.map-section.zoomed #game-grid {
+    transform: scale(1.5);
+}
+
+/* Indicador de zoom */
+.zoom-indicator {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    z-index: 100;
+}
+
+/* Navegación táctil */
+.touch-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-sm);
+}
+
+.touch-nav button {
+    flex: 1;
+    margin: 0 var(--spacing-xs);
+}
+
+/* Optimización para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .app-container {
+        padding: var(--spacing-xs);
+    }
+    
+    .tile {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .side-panel {
+        padding: var(--spacing-sm);
+        max-height: 35vh;
+    }
+    
+    .app-header h1 {
+        font-size: 1.3rem;
+    }
+}

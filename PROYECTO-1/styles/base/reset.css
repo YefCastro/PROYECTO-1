@@ -1,0 +1,59 @@
+/* ============================================
+   CITY BUILDER GAME - CSS RESET
+   ============================================ */
+
+/* Eliminar márgenes y paddings por defecto */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegurar altura completa */
+html,
+body {
+    height: 100%;
+}
+
+/* Eliminar estilos de listas */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Eliminar decoración de enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Normalizar botones */
+button {
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Normalizar formularios */
+input,
+select,
+textarea {
+    font: inherit;
+    border: none;
+    outline: none;
+}
+
+/* Imágenes responsivas */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Tabla consistente */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Domain Rules</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        .rule { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Test de Reglas del Dominio</h1>
+    
+    <div class="test-section">
+        <h2>A. Reglas de Construcción</h2>
+        <div class="rule">
+            1. Exclusividad espacial: Una celda no puede estar ocupada por más de un elemento<br>
+            2. Restricción presupuestaria: No se puede construir si el costo excede el dinero disponible<br>
+            3. Adyacencia obligatoria: Los edificios deben estar al lado de vías adyacentes<br>
+            4. Límite territorial: El tamaño del mapa es fijo, no se puede expandir
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>B. Reglas de Población</h2>
+        <div class="rule">
+            1. Capacidad residencial: Ciudadanos no pueden exceder la suma de capacidades<br>
+            2. Requisitos de crecimiento: Capacidad de vivienda, Felicidad > 60, Empleos disponibles<br>
+            3. Asignación automática: Ciudadanos sin hogar/empleo se asignan automáticamente
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>C. Reglas de Rutas</h2>
+        <div class="rule">
+            1. Transitabilidad: Solo las vías son transitables<br>
+            2. Existencia de camino: Si no hay secuencia de vías, no hay ruta<br>
+            3. Optimalidad: El algoritmo siempre retorna la ruta de menor distancia
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>D. Reglas de Persistencia</h2>
+        <div class="rule">
+            1. Guardado automático: Cada 30 segundos<br>
+            2. Guardado en LocalStorage: Toda la ciudad se serializa a JSON<br>
+            3. Exportación opcional: El jugador puede exportar manualmente a archivo JSON
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Resultados de las Pruebas</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <script type="module" src="tests/test-domain-rules.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{
+  "game": {
+    "initialTurn": 1,
+    "maxTurns": 500
+  },
+  "city": {
+    "name": "Mi Ciudad",
+    "geographicRegion": {
+      "id": "bogota",
+      "name": "Bogota",
+      "department": "Cundinamarca",
+      "country": "Colombia",
+      "coordinates": {
+        "latitude": 4.711,
+        "longitude": -74.0721
+      }
+    }
+  },
+  "map": {
+    "width": 15,
+    "height": 15,
+    "minSize": 15,
+    "maxSize": 30
+  },
+  "resources": {
+    "initial": {
+      "money": 50000,
+      "electricity": 0,
+      "water": 0,
+      "food": 0
+    },
+    "collapseThreshold": {
+      "money": -500,
+      "electricity": -100,
+      "water": -100,
+      "food": -100
+    }
+  },
+  "buildings": {
+    "RESIDENTIAL": {
+      "cost": 1000,
+      "populationCapacity": 4,
+      "electricityConsumption": 5,
+      "waterConsumption": 3,
+      "foodConsumption": 1
+    },
+    "COMMERCIAL": {
+      "cost": 2000,
+      "capacity": 6,
+      "moneyProduction": 500,
+      "electricityConsumption": 8,
+      "waterConsumption": 0
+    },
+    "INDUSTRIAL": {
+      "cost": 5000,
+      "capacity": 15,
+      "moneyProduction": 800,
+      "electricityConsumption": 20,
+      "waterConsumption": 15
+    },
+    "SERVICE": {
+      "cost": 4000,
+      "happinessBoost": 10,
+      "electricityConsumption": 15,
+      "waterConsumption": 0
+    },
+    "PARK": {
+      "cost": 1500,
+      "happinessBoost": 5,
+      "electricityConsumption": 0,
+      "waterConsumption": 0
+    },
+    "UTILITY_PLANT": {
+      "cost": 10000,
+      "electricityProduction": 200,
+      "waterProduction": 150
+    },
+    "ROAD": {
+      "cost": 100
+    }
+  },
+  "population": {
+    "growthRate": 0.05,
+    "baseHappiness": 50,
+    "maxHappiness": 100,
+    "minHappiness": 0,
+    "needs": {
+      "water": 1,
+      "electricity": 1,
+      "food": 1
+    }
+  },
+  "serviceBenefits": {
+    "police": 10,
+    "fire": 10,
+    "hospital": 10,
+    "park": 5
+  },
+  "weather": {
+    "enabled": true,
+    "defaultLocation": "Bogota",
+    "countryCode": "CO"
+  },
+  "news": {
+    "enabled": true,
+    "defaultQuery": "urban development city infrastructure public services"
+  },
+  "scoring": {
+    "populationWeight": 2,
+    "moneyWeight": 0.5,
+    "happinessWeight": 1
+  }
+}

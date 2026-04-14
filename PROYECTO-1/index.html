@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Builder Game</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components/map-animations.css">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <h1>City Builder Game</h1>
+        <p id="city-name-display"></p>
+    </header>
+
+    <main class="app-container">
+
+        <aside class="side-panel">
+
+            <section class="resources-panel">
+                <h2>Recursos</h2>
+                <div id="money"></div>
+                <div id="electricity"></div>
+                <div id="water"></div>
+                <div id="food"></div>
+
+                <div class="resource-settings-form">
+                    <label class="citizen-needs-field" for="resource-electricity-input">
+                        Electricidad actual
+                        <input type="number" id="resource-electricity-input" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="resource-water-input">
+                        Agua actual
+                        <input type="number" id="resource-water-input" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="resource-food-input">
+                        Comida actual
+                        <input type="number" id="resource-food-input" min="0" step="1">
+                    </label>
+                </div>
+            </section>
+
+            <section class="stats-panel">
+                <h2>Estado</h2>
+                <div id="region-display"></div>
+                <div id="map-size-display"></div>
+                <div id="turn"></div>
+                <div id="score"></div>
+                <div id="weather"></div>
+                <button id="score-details-btn" class="score-details-btn">Ver Detalles de Puntuación</button>
+            </section>
+
+            <section class="controls-panel">
+                <h2>Controles</h2>
+
+                <button id="next-turn-btn">Siguiente Turno</button>
+                <button id="auto-turn-btn">Auto Turn: OFF</button>
+                <input type="number" id="turn-duration-input" placeholder="Duración (segundos)" min="1" max="60" value="5">
+                
+                <div class="save-controls">
+                    <button id="save-btn">Guardar</button>
+                    <button id="load-btn">Cargar</button>
+                    <button id="force-save-btn">Forzar Guardado</button>
+                </div>
+
+                <div class="export-controls">
+                    <button id="export-btn">Exportar Ciudad</button>
+                    <input type="file" id="import-file" accept=".json" class="hidden-input">
+                    <button id="import-btn">Importar Ciudad</button>
+                </div>
+
+                <div class="auto-save-status">
+                    <span>Auto-Save: </span>
+                    <span id="auto-save-status">Activo</span>
+                    <span id="next-save-time">Próximo: 30s</span>
+                </div>
+            </section>
+
+            <section class="city-panel">
+                <h2>Alcaldia</h2>
+
+                <form id="city-form" class="panel-form">
+                    <input type="text" id="city-name-input" maxlength="40" placeholder="Nombre de la ciudad">
+                    <select id="region-city-select"></select>
+                    <div class="route-grid">
+                        <input type="number" id="map-width-input" min="15" max="30" step="1" placeholder="Ancho">
+                        <input type="number" id="map-height-input" min="15" max="30" step="1" placeholder="Alto">
+                    </div>
+                    <button type="submit">Actualizar Ciudad</button>
+                </form>
+            </section>
+
+            <section class="map-template-panel">
+                <h2>Cargar Mapa</h2>
+
+                <form id="map-template-form" class="panel-form">
+                    <textarea
+                        id="map-template-input"
+                        rows="8"
+                        placeholder="Pega aqui el mapa textual usando tokens como g r R1 C1 I1 S1 U1 P1"
+                    ></textarea>
+                    <button type="submit">Aplicar Mapa Textual</button>
+                </form>
+            </section>
+
+            <section class="build-panel">
+                <h2>Construir</h2>
+
+                <form id="build-form" class="panel-form">
+                    <select id="building-type"></select>
+                    <select id="building-subtype" hidden disabled></select>
+                    <input type="number" id="pos-x" placeholder="X">
+                    <input type="number" id="pos-y" placeholder="Y">
+                    <button type="submit">Construir</button>
+                </form>
+            </section>
+
+            <section class="demolition-panel">
+                <h2>Demoler</h2>
+
+                <form id="demolish-form" class="panel-form">
+                    <input type="number" id="demolish-x" placeholder="X">
+                    <input type="number" id="demolish-y" placeholder="Y">
+                    <button type="submit">Demoler</button>
+                </form>
+            </section>
+
+            <section class="route-panel">
+                <h2>Planificar Ruta</h2>
+
+                <div class="routing-controls">
+                    <button type="button" id="routing-mode-btn" class="routing-mode-btn">Activar Modo de Enrutamiento</button>
+                    <p class="routing-instructions">
+                        Activa el modo de enrutamiento para seleccionar edificios y calcular rutas óptimas.
+                    </p>
+                </div>
+
+                <form id="route-form" class="panel-form">
+                    <div class="route-grid">
+                        <input type="number" id="route-start-x" placeholder="Origen X">
+                        <input type="number" id="route-start-y" placeholder="Origen Y">
+                        <input type="number" id="route-end-x" placeholder="Destino X">
+                        <input type="number" id="route-end-y" placeholder="Destino Y">
+                    </div>
+
+                    <button type="submit">Calcular Ruta</button>
+                    <button type="button" id="clear-route-btn">Limpiar Ruta</button>
+                </form>
+
+                <div id="route-summary">Sin ruta activa.</div>
+            </section>
+
+            <section class="citizen-needs-panel">
+                <h2>Necesidades Ciudadanas</h2>
+
+                <div class="citizen-needs-form">
+                    <label class="citizen-needs-field" for="citizen-water-need">
+                        Agua por turno
+                        <input type="number" id="citizen-water-need" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="citizen-electricity-need">
+                        Electricidad por turno
+                        <input type="number" id="citizen-electricity-need" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="citizen-food-need">
+                        Comida por turno
+                        <input type="number" id="citizen-food-need" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="citizen-growth-rate">
+                        Crecimiento poblacional (ciudadanos/turno)
+                        <input type="number" id="citizen-growth-rate" min="1" max="3" step="1">
+                    </label>
+                </div>
+            </section>
+
+            <section class="service-benefits-panel">
+                <h2>Beneficios de Servicios</h2>
+
+                <div class="citizen-needs-form">
+                    <label class="citizen-needs-field" for="service-police-benefit">
+                        Policia
+                        <input type="number" id="service-police-benefit" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="service-fire-benefit">
+                        Bomberos
+                        <input type="number" id="service-fire-benefit" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="service-hospital-benefit">
+                        Hospital
+                        <input type="number" id="service-hospital-benefit" min="0" step="1">
+                    </label>
+
+                    <label class="citizen-needs-field" for="service-park-benefit">
+                        Parque
+                        <input type="number" id="service-park-benefit" min="0" step="1">
+                    </label>
+                </div>
+            </section>
+
+            <section class="api-config-panel">
+                <h2>Configuración de APIs</h2>
+
+                <div class="api-config-form">
+                    <label class="api-config-field" for="openweather-api-key">
+                        OpenWeatherMap API Key
+                        <input type="password" id="openweather-api-key" placeholder="Ingresa tu API key de OpenWeatherMap">
+                        <button type="button" id="save-weather-api-btn" class="save-api-btn">Guardar</button>
+                    </label>
+
+                    <label class="api-config-field" for="newsapi-api-key">
+                        NewsAPI Key
+                        <input type="password" id="newsapi-api-key" placeholder="Ingresa tu API key de NewsAPI">
+                        <button type="button" id="save-news-api-btn" class="save-api-btn">Guardar</button>
+                    </label>
+
+                    <div class="api-status">
+                        <div id="weather-api-status" class="api-status-item">
+                            <span class="status-label">Weather API:</span>
+                            <span class="status-value" id="weather-status-text">No configurada</span>
+                        </div>
+                        <div id="news-api-status" class="api-status-item">
+                            <span class="status-label">News API:</span>
+                            <span class="status-value" id="news-status-text">No configurada</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </aside>
+
+        <section class="map-section">
+            <div class="map-container" id="map-container">
+                <div id="game-grid"></div>
+                
+                                
+                <!-- Indicador de navegación táctil -->
+                <div class="touch-pan-indicator" id="touch-pan-indicator">
+                    Arrastra para mover
+                </div>
+                
+                            </div>
+        </section>
+
+    </main>
+
+    <footer class="news-panel">
+        <div id="news"></div>
+    </footer>
+
+    <div id="modal-overlay" class="hidden">
+        <div id="modal">
+            <h2 id="modal-title"></h2>
+            <div id="modal-content"></div>
+            <button id="modal-close">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="backend/route-api.js"></script>
+    <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

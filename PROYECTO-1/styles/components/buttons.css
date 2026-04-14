@@ -1,0 +1,171 @@
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+    box-shadow: var(--shadow-light);
+    margin: var(--spacing-xs) 0; /* Espaciado vertical entre botones */
+    width: 100%; /* Botones de ancho completo */
+    box-sizing: border-box;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.secondary {
+    background-color: var(--color-secondary);
+}
+
+button.danger {
+    background-color: var(--color-danger);
+}
+
+button.active {
+    background-color: var(--color-success);
+    border: 2px solid var(--color-success);
+}
+
+button.active:hover {
+    background-color: var(--color-success);
+    opacity: 0.8;
+}
+
+/* Routing system styles */
+.routing-mode-btn {
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+    width: 100%;
+    padding: var(--spacing-md);
+}
+
+.routing-mode-btn.active {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+.routing-mode-btn.active:hover {
+    background-color: var(--color-warning);
+    opacity: 0.8;
+}
+
+.routing-instructions {
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* API Configuration styles */
+.api-config-panel {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.api-config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.api-config-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.api-config-field label {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 0.9em;
+}
+
+.api-config-field input[type="password"] {
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 0.9em;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+.api-config-field input[type="password"]:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.save-api-btn {
+    background-color: var(--color-success);
+    border: none;
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: var(--spacing-xs) 0 0 0;
+    width: auto;
+    min-width: 80px;
+    align-self: flex-end;
+}
+
+.save-api-btn:hover {
+    background-color: #27ae60;
+}
+
+.api-status {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+}
+
+.api-status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.status-label {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 0.9em;
+}
+
+.status-value {
+    font-size: 0.85em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+}
+
+.status-value.configurada {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-value.no-configurada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.hidden-input {
+    display: none;
+}

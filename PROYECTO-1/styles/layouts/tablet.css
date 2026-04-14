@@ -1,0 +1,214 @@
+/* ============================================
+   TABLET LAYOUT - 768px to 1199px
+   ============================================ */
+
+@media (min-width: 768px) {
+
+    /* Container principal */
+    .app-container {
+        flex-direction: row;
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Header */
+    .app-header {
+        padding: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Panel lateral - Fijo en tablet */
+    .side-panel {
+        width: 320px;
+        max-height: none;
+        overflow-y: auto;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    /* Sección del mapa - Área principal */
+    .map-section {
+        width: calc(100% - 320px - var(--spacing-md));
+        order: 2;
+        min-height: 500px;
+        position: relative;
+    }
+
+    /* Grid del mapa más grande en tablet */
+    #game-grid {
+        gap: 3px;
+    }
+
+    .tile {
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+    }
+
+    /* Panel de noticias - Integrado en el side panel */
+    .news-panel {
+        order: 3;
+        margin-top: auto;
+        padding: var(--spacing-md);
+    }
+
+    /* Organización de paneles en tablet */
+    .controls-panel {
+        order: 1;
+    }
+
+    .stats-panel {
+        order: 2;
+    }
+
+    .city-panel {
+        order: 3;
+    }
+
+    .build-panel, .demolition-panel, .route-panel {
+        order: 4;
+    }
+
+    .citizen-needs-panel, .service-benefits-panel, .api-config-panel {
+        order: 5;
+    }
+
+    .map-template-panel {
+        order: 6;
+    }
+
+    /* Formularios optimizados para tablet */
+    .panel-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-sm);
+        align-items: end;
+    }
+
+    .panel-form button {
+        grid-column: span 2;
+    }
+
+    .panel-form input[type="number"] {
+        grid-column: span 1;
+    }
+
+    /* Botones más grandes en tablet */
+    button {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: 1rem;
+        min-height: 48px;
+    }
+
+    /* Modales más grandes */
+    #modal {
+        max-width: 80vw;
+        max-height: 85vh;
+    }
+
+    /* Controles de zoom para tablet */
+    .zoom-controls {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        z-index: 100;
+    }
+
+    .zoom-controls button {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 1.2rem;
+    }
+
+    /* Indicador de zoom mejorado */
+    .zoom-indicator {
+        top: var(--spacing-md);
+        right: 60px;
+        font-size: 0.9rem;
+    }
+
+    /* Navegación por pestañas en tablet */
+    .tab-navigation {
+        display: flex;
+        background: var(--color-surface);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+        overflow-x: auto;
+    }
+
+    .tab-button {
+        flex: 1;
+        padding: var(--spacing-sm);
+        background: transparent;
+        border: none;
+        border-radius: calc(var(--border-radius) - 2px);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        min-width: 80px;
+    }
+
+    .tab-button.active {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    /* Optimización para tablets medianas */
+    @media (max-width: 1024px) {
+        .side-panel {
+            width: 280px;
+        }
+
+        .map-section {
+            width: calc(100% - 280px - var(--spacing-md));
+        }
+
+        .tile {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    /* Optimización para tablets grandes */
+    @media (min-width: 1024px) {
+        .side-panel {
+            width: 350px;
+        }
+
+        .map-section {
+            width: calc(100% - 350px - var(--spacing-md));
+        }
+
+        .tile {
+            width: 28px;
+            height: 28px;
+        }
+
+        .app-header h1 {
+            font-size: 2rem;
+        }
+    }
+
+}

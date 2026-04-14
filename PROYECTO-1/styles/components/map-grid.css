@@ -1,0 +1,382 @@
+/* ============================================
+   MAP GRID - RESPONSIVO
+   ============================================ */
+
+#game-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    justify-content: center;
+    align-content: center;
+    transform-origin: center center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Contenedor del mapa con scroll y zoom */
+.map-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.map-container.scrollable {
+    overflow: auto;
+    cursor: grab;
+}
+
+.map-container.scrollable:active {
+    cursor: grabbing;
+}
+
+.map-container.zoomed {
+    cursor: zoom-in;
+}
+
+/* Tiles del mapa */
+.tile {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-radius: 4px;
+    background-color: var(--color-empty);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.tile.selected {
+    box-shadow: 0 0 0 3px var(--color-primary);
+    transform: scale(1.1);
+    z-index: 15;
+}
+
+.tile.route-highlight {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Tipos de edificios con gradientes mejorados */
+.tile-road {
+    background: linear-gradient(135deg, var(--color-road) 0%, #4a4a4a 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.tile-residential {
+    background: linear-gradient(135deg, var(--color-residential) 0%, #4a90e2 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.tile-commercial {
+    background: linear-gradient(135deg, var(--color-commercial) 0%, #7cb342 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.tile-industrial {
+    background: linear-gradient(135deg, var(--color-industrial) 0%, #ff9800 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.tile-service {
+    background: linear-gradient(135deg, var(--color-service) 0%, #9c27b0 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.tile-park {
+    background: linear-gradient(135deg, #7bb661 0%, #4caf50 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.tile-utility_plant {
+    background: linear-gradient(135deg, var(--color-utility) 0%, #f44336 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Efectos de hover mejorados */
+.tile:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tile:hover::before {
+    opacity: 1;
+}
+
+
+/* Navegación táctil */
+.touch-pan-indicator {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.touch-pan-indicator.visible {
+    opacity: 1;
+}
+
+
+/* Responsive tiles */
+@media (max-width: 480px) {
+    .tile {
+        width: 18px;
+        height: 18px;
+        border-radius: 2px;
+    }
+    
+    #game-grid {
+        gap: 1px;
+    }
+    
+    .zoom-controls button {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .minimap {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .tile {
+        width: 24px;
+        height: 24px;
+        border-radius: 3px;
+    }
+    
+    #game-grid {
+        gap: 2px;
+    }
+    
+    .zoom-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+    
+    .minimap {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .tile {
+        width: 28px;
+        height: 28px;
+        border-radius: 3px;
+    }
+    
+    #game-grid {
+        gap: 3px;
+    }
+    
+    .zoom-controls button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+    }
+    
+    .minimap {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tile {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+    }
+    
+    #game-grid {
+        gap: 4px;
+    }
+    
+    .zoom-controls button {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+    
+    .minimap {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .tile {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+    }
+    
+    #game-grid {
+        gap: 5px;
+    }
+    
+    .zoom-controls button {
+        width: 52px;
+        height: 52px;
+        font-size: 1.6rem;
+    }
+    
+    .minimap {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .tile {
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+    }
+    
+    #game-grid {
+        gap: 6px;
+    }
+    
+    .zoom-controls button {
+        width: 56px;
+        height: 56px;
+        font-size: 1.8rem;
+    }
+    
+    .minimap {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Animaciones de transición de zoom */
+#game-grid.zoom-1 {
+    transform: scale(0.5);
+}
+
+#game-grid.zoom-2 {
+    transform: scale(0.75);
+}
+
+#game-grid.zoom-3 {
+    transform: scale(1);
+}
+
+#game-grid.zoom-4 {
+    transform: scale(1.25);
+}
+
+#game-grid.zoom-5 {
+    transform: scale(1.5);
+}
+
+#game-grid.zoom-6 {
+    transform: scale(2);
+}
+
+/* Efectos de carga del mapa */
+.map-loading {
+    position: relative;
+}
+
+.map-loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Optimización de rendimiento */
+.tile {
+    will-change: transform;
+    contain: layout style paint;
+}
+
+#game-grid {
+    contain: layout;
+}
+
+/* Tipos de edificios */
+
+.tile-road {
+    background-color: var(--color-road);
+}
+
+.tile-residential {
+    background-color: var(--color-residential);
+}
+
+.tile-commercial {
+    background-color: var(--color-commercial);
+}
+
+.tile-industrial {
+    background-color: var(--color-industrial);
+}
+
+.tile-service {
+    background-color: var(--color-service);
+}
+
+.tile-park {
+    background-color: #7bb661;
+}
+
+.tile-utility_plant {
+    background-color: var(--color-utility);
+}
+
+.tile-utility {
+    background-color: var(--color-utility);
+}
+
+.tile-empty {
+    background-color: var(--color-empty);
+}
+
+.tile-route {
+    box-shadow: inset 0 0 0 3px #1f6feb;
+}
+
+.tile-route-origin {
+    box-shadow: inset 0 0 0 3px #0f9d58;
+}
+
+.tile-route-destination {
+    box-shadow: inset 0 0 0 3px #d93025;
+}

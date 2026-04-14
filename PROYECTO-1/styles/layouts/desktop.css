@@ -1,0 +1,408 @@
+/* ============================================
+   DESKTOP LAYOUT - 1200px and up
+   ============================================ */
+
+@media (min-width: 1200px) {
+
+    /* Container principal con máximo ancho */
+    .app-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+        gap: var(--spacing-lg);
+        background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 50%, var(--color-bg-tertiary) 100%);
+    }
+
+    /* Header más elegante */
+    .app-header {
+        padding: var(--spacing-xl) 0;
+        margin-bottom: var(--spacing-lg);
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-secondary) 100%);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-heavy);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .app-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    }
+
+    .app-header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Panel lateral con scroll elegante */
+    .side-panel {
+        width: 380px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) var(--color-surface);
+    }
+
+    .side-panel::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .side-panel::-webkit-scrollbar-track {
+        background: var(--color-surface);
+        border-radius: 4px;
+    }
+
+    .side-panel::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 4px;
+    }
+
+    /* Sección del mapa - Área principal expandida */
+    .map-section {
+        flex: 1;
+        order: 2;
+        min-height: 600px;
+        position: relative;
+        background: var(--color-surface);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-heavy);
+        overflow: hidden;
+    }
+
+    /* Grid del mapa más grande y detallado */
+    #game-grid {
+        gap: 4px;
+        padding: var(--spacing-md);
+        justify-content: center;
+        align-content: center;
+    }
+
+    .tile {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+    }
+
+    .tile:hover {
+        transform: scale(1.15) translateY(-2px);
+        z-index: 20;
+        box-shadow: var(--shadow-heavy);
+    }
+
+    .tile::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 4px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .tile:hover::after {
+        opacity: 1;
+    }
+
+    /* Panel de noticias integrado */
+    .news-panel {
+        order: 3;
+        margin-top: var(--spacing-md);
+        padding: var(--spacing-lg);
+        background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-heavy);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .news-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-accent), var(--color-warning));
+    }
+
+    /* Organización avanzada de paneles */
+    .controls-panel {
+        order: 1;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-secondary) 100%);
+    }
+
+    .stats-panel {
+        order: 2;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-tertiary) 100%);
+    }
+
+    .city-panel {
+        order: 3;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-primary) 100%);
+    }
+
+    .build-panel, .demolition-panel, .route-panel {
+        order: 4;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-secondary) 100%);
+    }
+
+    .citizen-needs-panel, .service-benefits-panel, .api-config-panel {
+        order: 5;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-tertiary) 100%);
+    }
+
+    .map-template-panel {
+        order: 6;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-primary) 100%);
+    }
+
+    /* Formularios optimizados para desktop */
+    .panel-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--spacing-md);
+        align-items: end;
+    }
+
+    .panel-form button {
+        grid-column: span 2;
+        justify-self: center;
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Botones con efectos avanzados */
+    button {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: var(--border-radius);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-heavy);
+    }
+
+    button:active {
+        transform: translateY(0);
+        transition: transform 0.1s;
+    }
+
+    /* Modales más grandes y elegantes */
+    #modal-overlay {
+        padding: var(--spacing-lg);
+        backdrop-filter: blur(10px);
+    }
+
+    #modal {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-heavy);
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-secondary) 100%);
+    }
+
+    /* Controles de zoom avanzados */
+    .zoom-controls {
+        position: absolute;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        z-index: 100;
+        background: var(--color-surface);
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-heavy);
+    }
+
+    .zoom-controls button {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    /* Indicador de zoom mejorado */
+    .zoom-indicator {
+        top: var(--spacing-lg);
+        right: 80px;
+        font-size: 1rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: var(--color-primary);
+        color: white;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        box-shadow: var(--shadow-medium);
+    }
+
+    /* Navegación por pestañas elegante */
+    .tab-navigation {
+        display: flex;
+        background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg-secondary) 100%);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+        overflow-x: auto;
+        box-shadow: var(--shadow-medium);
+    }
+
+    .tab-button {
+        flex: 1;
+        padding: var(--spacing-md);
+        background: transparent;
+        border: none;
+        border-radius: calc(var(--border-radius-lg) - 4px);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        min-width: 100px;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tab-button::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: var(--color-primary);
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+    }
+
+    .tab-button.active {
+        background: var(--color-primary);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .tab-button.active::after {
+        width: 100%;
+    }
+
+    /* Efectos visuales avanzados */
+    .panel-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .panel-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .panel-section:hover::before {
+        left: 100%;
+    }
+
+    /* Optimización para pantallas ultra anchas */
+    @media (min-width: 1600px) {
+        .app-container {
+            max-width: 1920px;
+        }
+
+        .side-panel {
+            width: 420px;
+        }
+
+        .tile {
+            width: 36px;
+            height: 36px;
+        }
+
+        .app-header h1 {
+            font-size: 3rem;
+        }
+
+        #game-grid {
+            gap: 5px;
+        }
+    }
+
+    /* Optimización para pantallas 4K */
+    @media (min-width: 2560px) {
+        .app-container {
+            max-width: 2400px;
+            padding: var(--spacing-xl);
+        }
+
+        .side-panel {
+            width: 480px;
+        }
+
+        .tile {
+            width: 40px;
+            height: 40px;
+        }
+
+        .app-header h1 {
+            font-size: 3.5rem;
+        }
+
+        #game-grid {
+            gap: 6px;
+        }
+
+        button {
+            padding: var(--spacing-lg) var(--spacing-xl);
+            font-size: 1.2rem;
+        }
+    }
+
+}

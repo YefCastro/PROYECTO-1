@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Routing System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        .formula { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; }
+        .matrix { background: #f9f9f9; padding: 10px; font-family: monospace; white-space: pre; }
+    </style>
+</head>
+<body>
+    <h1>Test del Sistema de Rutas</h1>
+    
+    <div class="test-section">
+        <h2>Algoritmo: Dijkstra</h2>
+        <div class="formula">
+            Proceso:
+            1. El jugador selecciona edificio de origen
+            2. El jugador selecciona edificio de destino  
+            3. El sistema genera matriz del mapa:
+               0 = celda no transitable (edificios, terreno vacío)
+               1 = celda transitable (vías)
+            4. Se envía petición POST al backend: /api/calculate-route
+            5. El backend retorna array de coordenadas representando la ruta
+            6. El frontend anima la ruta en el mapa
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Resultados de las Pruebas</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <script type="module" src="tests/test-routing-system.js"></script>
+</body>
+</html>

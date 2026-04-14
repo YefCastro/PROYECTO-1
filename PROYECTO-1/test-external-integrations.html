@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test External Integrations</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        .endpoint { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; }
+        .data-field { background: #f9f9f9; padding: 5px; margin: 5px 0; border-left: 3px solid #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Test de Integraciones Externas</h1>
+    
+    <div class="test-section">
+        <h2>A. API del Clima (OpenWeatherMap)</h2>
+        <div class="endpoint">
+            Endpoint: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}
+            <br>Frecuencia de actualización: Cada 30 minutos
+        </div>
+        <div class="data-field">
+            Datos obtenidos:
+            <ul>
+                <li>Temperatura (°C)</li>
+                <li>Condición climática (soleado, lluvioso, nublado, tormenta)</li>
+                <li>Humedad (%)</li>
+                <li>Velocidad del viento (km/h)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>B. API de Noticias (NewsAPI)</h2>
+        <div class="endpoint">
+            Endpoint: GET https://newsapi.org/v2/top-headlines?country={code}
+            <br>Frecuencia de actualización: Cada 30 minutos
+        </div>
+        <div class="data-field">
+            Datos obtenidos:
+            <ul>
+                <li>Últimas 5 noticias</li>
+                <li>Título</li>
+                <li>Descripción breve</li>
+                <li>Imagen (si disponible)</li>
+                <li>Enlace a noticia completa</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Resultados de las Pruebas</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <script type="module" src="tests/test-external-integrations.js"></script>
+</body>
+</html>

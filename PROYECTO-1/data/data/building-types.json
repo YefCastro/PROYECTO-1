@@ -1,0 +1,191 @@
+{
+  "RESIDENTIAL": {
+    "category": "ZONING",
+    "label": "Residencial",
+    "requiresRoad": true,
+    "variants": {
+      "HOUSE": {
+        "label": "Casa",
+        "cost": 1000,
+        "happinessImpact": 2,
+        "stats": {
+          "populationCapacity": 4,
+          "electricityConsumption": 5,
+          "waterConsumption": 3,
+          "foodConsumption": 1
+        }
+      },
+      "APARTMENT": {
+        "label": "Apartamento",
+        "cost": 3000,
+        "happinessImpact": 1,
+        "stats": {
+          "populationCapacity": 12,
+          "electricityConsumption": 15,
+          "waterConsumption": 10,
+          "foodConsumption": 1
+        }
+      }
+    }
+  },
+  "COMMERCIAL": {
+    "category": "ECONOMY",
+    "label": "Comercial",
+    "requiresRoad": true,
+    "variants": {
+      "STORE": {
+        "label": "Tienda",
+        "cost": 2000,
+        "requiresElectricity": true,
+        "stats": {
+          "capacity": 6,
+          "electricityConsumption": 8,
+          "waterConsumption": 0,
+          "moneyProduction": 500
+        }
+      },
+      "MALL": {
+        "label": "Centro Comercial",
+        "cost": 8000,
+        "requiresElectricity": true,
+        "stats": {
+          "capacity": 20,
+          "electricityConsumption": 25,
+          "waterConsumption": 0,
+          "moneyProduction": 2000
+        }
+      }
+    }
+  },
+  "INDUSTRIAL": {
+    "category": "PRODUCTION",
+    "label": "Industrial",
+    "requiresRoad": true,
+    "variants": {
+      "FACTORY": {
+        "label": "Fabrica",
+        "cost": 5000,
+        "requiresElectricity": true,
+        "requiresWater": true,
+        "pollutionImpact": 6,
+        "stats": {
+          "capacity": 15,
+          "electricityConsumption": 20,
+          "waterConsumption": 15,
+          "moneyProduction": 800
+        }
+      },
+      "FARM": {
+        "label": "Granja",
+        "cost": 3000,
+        "requiresWater": true,
+        "pollutionImpact": 1,
+        "stats": {
+          "capacity": 8,
+          "electricityConsumption": 0,
+          "waterConsumption": 10,
+          "foodProduction": 50,
+          "moneyProduction": 0
+        }
+      }
+    }
+  },
+  "SERVICE": {
+    "category": "PUBLIC_SERVICE",
+    "label": "Servicios Publicos",
+    "requiresRoad": true,
+    "variants": {
+      "POLICE_STATION": {
+        "label": "Estacion de Policia",
+        "serviceType": "police",
+        "cost": 4000,
+        "coverageRadius": 5,
+        "happinessBoost": 10,
+        "requiresElectricity": true,
+        "stats": {
+          "electricityConsumption": 15,
+          "waterConsumption": 0
+        }
+      },
+      "FIRE_STATION": {
+        "label": "Estacion de Bomberos",
+        "serviceType": "fire",
+        "cost": 4000,
+        "coverageRadius": 5,
+        "happinessBoost": 10,
+        "requiresElectricity": true,
+        "stats": {
+          "electricityConsumption": 15,
+          "waterConsumption": 0
+        }
+      },
+      "HOSPITAL": {
+        "label": "Hospital",
+        "serviceType": "hospital",
+        "cost": 6000,
+        "coverageRadius": 7,
+        "happinessBoost": 10,
+        "requiresElectricity": true,
+        "requiresWater": true,
+        "stats": {
+          "electricityConsumption": 20,
+          "waterConsumption": 10
+        }
+      }
+    }
+  },
+  "PARK": {
+    "category": "RECREATION",
+    "label": "Parque",
+    "cost": 1500,
+    "requiresRoad": true,
+    "serviceType": "park",
+    "coverageRadius": 30,
+    "happinessBoost": 5,
+    "appliesGlobally": true,
+    "stats": {
+      "electricityConsumption": 0,
+      "waterConsumption": 0,
+      "foodConsumption": 0,
+      "moneyProduction": 0
+    }
+  },
+  "UTILITY_PLANT": {
+    "category": "UTILITY",
+    "label": "Plantas de Utilidad",
+    "requiresRoad": true,
+    "variants": {
+      "POWER_PLANT": {
+        "label": "Planta Electrica",
+        "utilityType": "electricity",
+        "cost": 10000,
+        "stats": {
+          "electricityProduction": 200,
+          "waterProduction": 0,
+          "foodProduction": 0
+        }
+      },
+      "WATER_PLANT": {
+        "label": "Planta de Agua",
+        "utilityType": "water",
+        "cost": 8000,
+        "requiresElectricity": true,
+        "stats": {
+          "electricityConsumption": 20,
+          "waterProduction": 150,
+          "foodProduction": 0
+        }
+      }
+    }
+  },
+  "ROAD": {
+    "category": "INFRASTRUCTURE",
+    "label": "Via",
+    "cost": 100,
+    "requiresRoad": false,
+    "stats": {
+      "populationCapacity": 0,
+      "moneyProduction": 0
+    }
+  }
+}

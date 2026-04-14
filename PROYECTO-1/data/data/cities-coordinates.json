@@ -1,0 +1,64 @@
+{
+  "cities": [
+    {
+      "id": "bogota",
+      "name": "Bogota",
+      "country": "Colombia",
+      "department": "Cundinamarca",
+      "coordinates": {
+        "latitude": 4.711,
+        "longitude": -74.0721
+      }
+    },
+    {
+      "id": "medellin",
+      "name": "Medellin",
+      "country": "Colombia",
+      "department": "Antioquia",
+      "coordinates": {
+        "latitude": 6.2442,
+        "longitude": -75.5812
+      }
+    },
+    {
+      "id": "cali",
+      "name": "Cali",
+      "country": "Colombia",
+      "department": "Valle del Cauca",
+      "coordinates": {
+        "latitude": 3.4516,
+        "longitude": -76.532
+      }
+    },
+    {
+      "id": "barranquilla",
+      "name": "Barranquilla",
+      "country": "Colombia",
+      "department": "Atlantico",
+      "coordinates": {
+        "latitude": 10.9685,
+        "longitude": -74.7813
+      }
+    },
+    {
+      "id": "cartagena",
+      "name": "Cartagena",
+      "country": "Colombia",
+      "department": "Bolivar",
+      "coordinates": {
+        "latitude": 10.391,
+        "longitude": -75.4794
+      }
+    },
+    {
+      "id": "bucaramanga",
+      "name": "Bucaramanga",
+      "country": "Colombia",
+      "department": "Santander",
+      "coordinates": {
+        "latitude": 7.1193,
+        "longitude": -73.1227
+      }
+    }
+  ]
+}

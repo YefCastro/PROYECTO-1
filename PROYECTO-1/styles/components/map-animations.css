@@ -1,0 +1,129 @@
+/* ============================================
+   MAP ANIMATIONS
+   ============================================ */
+
+/* Route path animations */
+.route-path {
+    background-color: #ffeb3b !important;
+    border: 2px solid #ffc107 !important;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.8) !important;
+    animation: routePulse 1s ease-in-out infinite;
+    transform: scale(1.1);
+    z-index: 10;
+    position: relative;
+}
+
+.route-start {
+    background-color: #4caf50 !important;
+    border: 3px solid #2e7d32 !important;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.8) !important;
+    transform: scale(1.15);
+    z-index: 11;
+    position: relative;
+}
+
+.route-end {
+    background-color: #f44336 !important;
+    border: 3px solid #c62828 !important;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.8) !important;
+    transform: scale(1.15);
+    z-index: 11;
+    position: relative;
+}
+
+/* Route animation keyframes */
+@keyframes routePulse {
+    0% {
+        background-color: #ffeb3b;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+    }
+    50% {
+        background-color: #fff59d;
+        box-shadow: 0 0 20px rgba(255, 193, 7, 1);
+    }
+    100% {
+        background-color: #ffeb3b;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+    }
+}
+
+/* Route appearance animation */
+.route-path {
+    animation: routeAppear 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes routeAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* Hover effects for route elements */
+.tile.route-path:hover {
+    background-color: #fff59d !important;
+    transform: scale(1.2);
+    z-index: 12;
+}
+
+.tile.route-start:hover {
+    transform: scale(1.25);
+    z-index: 13;
+}
+
+.tile.route-end:hover {
+    transform: scale(1.25);
+    z-index: 13;
+}
+
+/* Routing mode cursor */
+.routing-mode-active .tile {
+    cursor: crosshair;
+}
+
+.routing-mode-active .tile:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Route summary styling */
+.route-summary {
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.route-summary.active {
+    background: #e8f5e8;
+    border-color: #4caf50;
+}
+
+.route-summary.error {
+    background: #ffebee;
+    border-color: #f44336;
+}
+
+/* Loading animation for route calculation */
+.route-calculating {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Scoring System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .warning { color: orange; }
+        .formula { background: #f0f0f0; padding: 10px; margin: 10px 0; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <h1>Test del Sistema de Puntuación</h1>
+    
+    <div class="test-section">
+        <h2>Fórmula de Puntuación</h2>
+        <div class="formula">
+            score = (población × 10) + (felicidad_promedio × 5) + (dinero ÷ 100) + (número_edificios × 50) + (balance_electricidad × 2) + (balance_agua × 2) + bonificaciones - penalizaciones
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Resultados de las Pruebas</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <script type="module" src="tests/test-scoring-system.js"></script>
+</body>
+</html>
