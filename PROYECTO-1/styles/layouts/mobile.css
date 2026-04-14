@@ -69,7 +69,7 @@
 #game-grid {
     display: grid;
     gap: 3px; /* Aumentado para mejor separación */
-    justify-content: start; /* Alineado a la izquierda */
+    justify-content: center; /* Centrado como en el diseño original */
     transform-origin: top left; /* Origen en la esquina */
     transition: transform 0.3s ease;
     min-width: max-content; /* Asegurar que no se recorte */

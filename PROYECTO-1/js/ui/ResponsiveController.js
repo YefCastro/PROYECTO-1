@@ -103,7 +103,7 @@ export class ResponsiveController {
             this.scrollLeft = this.mapContainer.scrollLeft;
             this.scrollTop = this.mapContainer.scrollTop;
             
-            this.mapContainer.style.cursor = 'grabbing';
+            this.mapContainer.classList.add('cursor-grabbing');
             this.mapContainer.classList.add('scrollable');
         }
     }
@@ -124,7 +124,7 @@ export class ResponsiveController {
     
     handleMouseUp() {
         this.isDragging = false;
-        this.mapContainer.style.cursor = '';
+        this.mapContainer.classList.remove('cursor-grabbing');
         this.mapContainer.classList.remove('scrollable');
     }
     
@@ -248,16 +248,14 @@ export class ResponsiveController {
             this.gameGrid.classList.add(`zoom-${zoomClass}`);
             
             // Aplicar transformación directa si es necesario
-            this.gameGrid.style.transform = `scale(${zoom})`;
+            // Aplicar transformación usando clases predefinidas
         }
         
         // Ajustar scroll según el zoom
         if (zoom > 1) {
             this.mapContainer.classList.add('zoomed');
-            this.mapContainer.style.overflow = 'auto';
         } else {
             this.mapContainer.classList.remove('zoomed');
-            this.mapContainer.style.overflow = 'hidden';
         }
         
         this.updateZoomIndicator();
@@ -286,10 +284,12 @@ export class ResponsiveController {
         const scaleX = 120 / mapWidth; // Ancho del minimapa
         const scaleY = 120 / mapHeight; // Alto del minimapa
         
-        this.minimapViewport.style.width = `${viewportWidth * scaleX}px`;
-        this.minimapViewport.style.height = `${viewportHeight * scaleY}px`;
-        this.minimapViewport.style.left = `${scrollLeft * scaleX}px`;
-        this.minimapViewport.style.top = `${scrollTop * scaleY}px`;
+        // Para el minimapa, usamos variables CSS definidas en el archivo CSS
+        this.minimapViewport.classList.add('minimap-viewport');
+        this.minimapViewport.style.setProperty('--viewport-width', `${viewportWidth * scaleX}px`);
+        this.minimapViewport.style.setProperty('--viewport-height', `${viewportHeight * scaleY}px`);
+        this.minimapViewport.style.setProperty('--viewport-left', `${scrollLeft * scaleX}px`);
+        this.minimapViewport.style.setProperty('--viewport-top', `${scrollTop * scaleY}px`);
     }
     
     adjustMapToViewport() {
@@ -300,12 +300,12 @@ export class ResponsiveController {
         if (this.gameGrid) {
             if (isMobile && this.currentZoom > 1) {
                 // En mobile con zoom, permitir scroll
-                this.mapContainer.style.overflow = 'auto';
+                this.mapContainer.classList.add('zoomed');
             } else if (isTablet && this.currentZoom > 1.5) {
                 // En tablet con zoom alto, permitir scroll
-                this.mapContainer.style.overflow = 'auto';
+                this.mapContainer.classList.add('zoomed');
             } else {
-                this.mapContainer.style.overflow = 'hidden';
+                this.mapContainer.classList.remove('zoomed');
             }
         }
     }

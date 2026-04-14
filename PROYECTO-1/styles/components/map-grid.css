@@ -10,6 +10,9 @@
     transform-origin: center center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    /* Forzar grid template columns y rows */
+    grid-template-columns: repeat(15, var(--tile-size));
+    grid-template-rows: repeat(15, var(--tile-size));
 }
 
 /* Contenedor del mapa con scroll y zoom */

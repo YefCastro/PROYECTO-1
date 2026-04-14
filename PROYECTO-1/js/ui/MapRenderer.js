@@ -35,7 +35,8 @@ export class MapRenderer {
             ? `${options.route.destination.x},${options.route.destination.y}`
             : null;
 
-        this.container.style.display = "grid";
+        this.container.classList.add("game-grid");
+        // Establecer directamente el grid template para asegurar que funcione
         this.container.style.gridTemplateColumns = `repeat(${width}, var(--tile-size))`;
         this.container.style.gridTemplateRows = `repeat(${height}, var(--tile-size))`;
 
@@ -49,7 +50,7 @@ export class MapRenderer {
                 tileElement.classList.add("tile");
                 tileElement.dataset.x = x;
                 tileElement.dataset.y = y;
-                tileElement.style.border = "1px solid black";
+                tileElement.classList.add("tile-border");
 
                 if (!entity) {
                     tileElement.classList.add("tile-empty");

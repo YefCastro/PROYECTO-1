@@ -299,18 +299,6 @@ export class EventHandler {
                     <div class="score-total">${breakdown.base.total} + ${breakdown.bonuses.total} - ${breakdown.penalties.total} = <strong>${breakdown.total}</strong></div>
                 </div>
             </div>
-            
-            <style>
-                .score-breakdown { max-height: 400px; overflow-y: auto; }
-                .score-section { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 5px; }
-                .score-section div { margin: 5px 0; }
-                .positive { color: #28a745; font-weight: bold; }
-                .negative { color: #dc3545; font-weight: bold; }
-                .disabled { color: #6c757d; font-style: italic; }
-                .total { margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
-                .final-score { margin-top: 15px; padding: 15px; background: #e9ecef; border-radius: 5px; text-align: center; }
-                .score-total { font-size: 18px; color: #007bff; }
-            </style>
         `;
         
         this.modalController.show("Detalles de Puntuación", content);
@@ -414,7 +402,6 @@ export class EventHandler {
                 const tile = document.querySelector(`.tile[data-x="${point.x}"][data-y="${point.y}"]`);
                 if (tile) {
                     tile.classList.add('route-path');
-                    tile.style.animationDelay = `${index * 100}ms`;
                 }
             }, index * 100);
         });
@@ -426,7 +413,6 @@ export class EventHandler {
     clearRouteAnimation() {
         document.querySelectorAll('.route-path').forEach(tile => {
             tile.classList.remove('route-path');
-            tile.style.animationDelay = '';
         });
     }
 
